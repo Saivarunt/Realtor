@@ -1,0 +1,24 @@
+<p>buyeractions works!</p>
+
+
+<div class="buyer-container" *ngIf="buyer">
+    <ol>
+        <li>{{currentPropertySelection?.name}}</li>
+        <li>{{currentPropertySelection?.location?.coordinates}}</li>
+        <li>{{currentPropertySelection?.price}}</li>
+        <select name="agent-select" id="agent-select" #selectAgent (change)="setAgent(selectAgent.value)">
+            <option default>Select an Agent</option>
+            <option [value]="a.agentId" *ngFor="let a of agents">{{a.userId.username}}</option>
+        </select>
+
+        <mat-dialog-actions>
+        <button mat-raised-button mat-dialog-close (click)="buyProperty()">Buy</button>
+        </mat-dialog-actions>
+    </ol>
+</div>
+
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
+
+

@@ -1,0 +1,21 @@
+<p>search-results works!</p>
+
+
+<div class="container">
+    <div class="card" *ngFor="let property of searchValues">
+        <div class="card-inner">
+            <div class="front">
+                <img src="/assets/default.jpeg">
+                <p class="text-content">Name: {{property.name}}</p>
+
+            </div>
+            <div class="back">
+                    <p>Name: {{property.name}}</p>
+                    <p>Location: <a>{{property.location.city}}</a> </p>
+                    <p>Rating: {{property.rating}}</p>
+                    <p>Price: {{property.price}}</p>
+                    <p>Availability: {{property.availability}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+
+<button (click)="backHome()" mat-icon-button color="primary"><mat-icon>home</mat-icon></button>
+
+<div class="container">
+    <div class="card" *ngFor="let location of locations">
+        <div class="card-inner">
+            <div class="front">
+                <p>City</p>
+                <p>{{location.city}}</p>
+            </div>
+            
+            <div class="back">
+                    <p>City: {{location.city}}</p>
+                    <p>Country: {{location.country}}</p>
+                    <p>State: {{location.state}}</p>
+                    <p>Address: {{location.primary_address}}</p>
+                    <p>Pin-code: {{location.pincode}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<mat-paginator [length]="totalElements"
+              [pageSize]="pageSize"
+              (page)="handlePageEvent($event)"
+              [pageSizeOptions]="[10]"
+              aria-label="Select page">
+</mat-paginator>
