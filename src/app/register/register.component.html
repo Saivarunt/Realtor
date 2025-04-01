@@ -1,0 +1,46 @@
+<!-- <div class="register-container">
+    <button (click)= "registrationTypeSet('Agent')" mat-raised-button>Agent Registration </button>
+    <button (click)= "registrationTypeSet('Buyer')" mat-raised-button>Buyer Registration</button>
+    <button (click)= "registrationTypeSet('Seller')" mat-raised-button>Seller Registration</button>
+
+    <p>{{registrationType}} Registration</p>
+    <form action="post">
+        <p>* <span><a routerLink="/login">Login</a></span> if you already have an account.    </p>
+        
+        <mat-form-field appearance="fill"> -->
+        <!-- <label for="name">Name:</label> -->
+        <!-- <mat-label>Enter your Username</mat-label>
+        <input type="text" id="name" name="username" [(ngModel)] = "formResponse.username" required matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"> -->
+        <!-- <label for="pass">Password:</label> -->
+            <!-- <mat-label>Enter your password</mat-label>
+            <input type="text" id="pass" name="password" [(ngModel)] = "formResponse.password" required matInput>
+        </mat-form-field>
+        
+    <button type="button" (click)= "regitserResponseFunction()" mat-raised-button>Register</button>
+    </form>
+</div> -->
+
+
+
+<div class="register-container">
+    <button (click)= "registrationTypeSet('Agent')" mat-raised-button>Agent Registration </button>
+    <button (click)= "registrationTypeSet('Buyer')" mat-raised-button>Buyer Registration</button>
+    <button (click)= "registrationTypeSet('Seller')" mat-raised-button>Seller Registration</button>
+
+    <p>{{registrationType}} Registration</p>
+    <form [formGroup]="formResponse" (ngSubmit)="regitserResponseFunction()">
+        <p>* <span><a routerLink="/login">Login</a></span> if you already have an account.</p>
+
+        <label>Enter your Username</label>
+        <input type="text" id="name" name="username" formControlName="username" required >
+
+
+            <label>Enter your password</label>
+            <input type="text" id="pass" name="password" formControlName="password"  required >
+        
+        <button type="submit">Register</button>
+    </form>
+</div>

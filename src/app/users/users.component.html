@@ -1,0 +1,30 @@
+<p>users works!</p>
+
+
+<div class="container">
+    <div class="card" *ngFor="let user of users">
+        <div class="card-inner">
+            <div class="front">
+                <p>Name : {{user.fullName}}</p>
+                <p>Username: {{user.username}}</p>
+                <p>Roles</p>
+                <p *ngFor="let a of user.authorities">{{a.authority}}</p>
+            </div>
+            
+            <div class="back">
+                    <p>ID: {{user.userId}}</p>
+                    <p>Username: {{user.username}}</p>
+                    <p>Fullname: {{user.fullName}}</p>
+                    <p>Email: {{user.email}}</p>
+                    <p>Phone Number: {{user.phoneNumber}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-paginator [length]="totalElements"
+              [pageSize]="pageSize"
+              (page)="handlePageEvent($event)"
+              [pageSizeOptions]="[10]"
+              aria-label="Select page">
+</mat-paginator>

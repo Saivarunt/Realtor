@@ -1,0 +1,34 @@
+<p>profile works!</p>
+
+<button (click)="backHome()" mat-icon-button color="primary"><mat-icon>home</mat-icon></button>
+
+<!-- <form>
+    <label for="username">Username</label>
+    <input [value]="user?.username" id="username" name="username" disabled>
+    <label for="fullname">Fullname</label>
+    <input [value]="user?.fullname" id="fullname" name="fullname" [(ngModel)] = "formResponse.fullname">
+    <label for="email">Email</label>
+    <input [value]="user?.email" id="email" name="email" [(ngModel)] = "formResponse.email">
+    <label for="phonenumber">Phonenumber</label>
+    <input [value]="user?.phonenumber" id="phonenumber" name="phonenumber" [(ngModel)] = "formResponse.phonenumber">
+    <button mat-raised-button (click)="updateUserDetails()">Update</button>
+</form> -->
+
+<form [formGroup]="formResponse" (ngSubmit)="updateUserDetails()">
+    <label for="username">Username</label>
+    <input [value]="user?.username" id="username" name="username" disabled>
+    <label for="fullname">Fullname</label>
+    <input [value]="user?.fullname" id="fullname" name="fullname" formControlName = "fullname">
+    <label for="email">Email</label>
+    <input [value]="user?.email" id="email" name="email" formControlName = "email">
+    <label for="phonenumber">Phonenumber</label>
+    <input type="number" [value]="user?.phonenumber" id="phonenumber" name="phonenumber" formControlName = "phonenumber">
+    <button type="submit">Update</button>
+</form>
+
+<div *ngIf="agent || admin">
+    <label for="rating">Rating</label>
+    <input [value]="agentDetails?.rating" id="rating" disabled>
+    <label for="sale-count">Sale count</label>
+    <input [value]="agentDetails?.sale_count" id="sale-count" disabled>
+</div>

@@ -1,0 +1,162 @@
+<!-- <div class="property-add-container" *ngIf="type === 'add'">
+        
+    <form action="post">
+        <label for="name">Name</label> 
+        <input type="text" name="name" id="name" [(ngModel)] = "addOrUpdateFormResponse.name" required>
+        <div class="locations-list-container" *ngIf="!addNewLocation">
+            <label for="location">Location</label>  
+            <select name="location" id="location" #locid (change)="getFromLocationList(locid.value)">
+                <option default>Select a location</option>
+                <option [value]="l.locationId" *ngFor="let l of locations">{{l.city}}</option>
+                <br>
+            </select> 
+            <br>
+            <button mat-raised-button (click)="newLocation()">Add New Location</button>
+        </div>
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" [(ngModel)] = "addOrUpdateFormResponse.price" required>   
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close (click)="addProperty()">Add</button>
+        </mat-dialog-actions>
+    </form>
+
+</div>
+
+<div class="property-update-container" *ngIf="type === 'update'">
+        
+    <form action="post">
+        <label for="name">Name</label> 
+        <input type="text" name="name" id="name" [(ngModel)] = "addOrUpdateFormResponse.name" [value]="addOrUpdateFormResponse.name" required>
+        <div class="locations-list-container" *ngIf="!addNewLocation">
+            <label for="location">Location</label>  
+            <select name="location" id="location" #locid (change)="getFromLocationList(locid.value)">
+                <option default>Select a location</option>
+                <option [value]="l.locationId" *ngFor="let l of locations">{{l.city}}</option>
+                <br>
+            </select> 
+            <br>
+            <button mat-raised-button (click)="newLocation()">Add New Location</button>
+        </div>
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" [(ngModel)] = "addOrUpdateFormResponse.price" [value]="addOrUpdateFormResponse.price" required>   
+        <mat-dialog-actions>
+            <button mat-raised-button mat-dialog-close (click)="updateProperty()">Update</button>
+        </mat-dialog-actions>
+    </form>
+
+</div>
+
+
+<div class="location-container" *ngIf="addNewLocation">
+    <form action="post">
+        <label for="country">Country</label> 
+        <input type="text" name="country" id="country" [(ngModel)] = "locationResponse.country" required>
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" [(ngModel)] = "locationResponse.city"  required>  
+        <label for="state">State</label>
+        <input type="text" name="state" id="state" [(ngModel)] = "locationResponse.state"  required>   
+        <label for="address">Primary Address</label>
+        <input type="text" name="address" id="address" [(ngModel)] = "locationResponse.primary_address"  required>   
+        <label for="pincode">Pincode</label>
+        <input type="text" name="pincode" id="pincode" [(ngModel)] = "locationResponse.pincode"  required> 
+        <label for="coordinates">Co-ordinates</label>
+        <input type="text" name="coordinates" id="coordinates" [(ngModel)] = "locationResponse.coordinates"  required>     
+        <button mat-raised-button (click)="updateLocationDetails()" *ngIf="!updatedLocation">Update Location</button>
+    </form>
+</div>
+
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions> -->
+
+
+
+<div class="property-add-container" *ngIf="type === 'add'">
+        
+    <form [formGroup]="addOrUpdateFormBuilder" (ngSubmit)="addProperty()">
+        <label for="name">Name</label> 
+        <input type="text" name="name" id="name" formControlName = "name" required>
+        <div class="locations-list-container" *ngIf="!addNewLocation">
+            <label for="location">Location</label>  
+            <select name="location" id="location" #locid (change)="getFromLocationList(locid.value)">
+                <option default>Select a location</option>
+                <option [value]="l.locationId" *ngFor="let l of locations">{{l.city}}</option>
+                <br>
+            </select> 
+            <br>
+            <button (click)="newLocation()">Add New Location</button>
+        </div>
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" formControlName = "price" required>   
+        <button type="submit" mat-dialog-close>Add</button>
+
+    </form>
+
+</div>
+
+<div class="property-update-container" *ngIf="type === 'update'">
+        
+    <form [formGroup]="addOrUpdateFormBuilder" (ngSubmit)="updateProperty()">
+        <label for="name">Name</label> 
+        <input type="text" name="name" id="name" formControlName = "name" [value]="addOrUpdateFormResponse.name" required>
+        <div class="locations-list-container" *ngIf="!addNewLocation">
+            <label for="location">Location</label>  
+            <select name="location" id="location" #locid (change)="getFromLocationList(locid.value)">
+                <option default>Select a location</option>
+                <option [value]="l.locationId" *ngFor="let l of locations">{{l.city}}</option>
+                <br>
+            </select> 
+            <br>
+            <button mat-raised-button (click)="newLocation()">Add New Location</button>
+        </div>
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" formControlName = "price" [value]="addOrUpdateFormResponse.price" required>   
+
+            <button type="submit" mat-dialog-close>Update</button>
+
+    </form>
+
+</div>
+
+
+<div class="location-container" *ngIf="addNewLocation">
+    <form action="post">
+        <label for="country">Country</label> 
+        <input type="text" name="country" id="country" [(ngModel)] = "locationResponse.country" required>
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" [(ngModel)] = "locationResponse.city"  required>  
+        <label for="state">State</label>
+        <input type="text" name="state" id="state" [(ngModel)] = "locationResponse.state"  required>   
+        <label for="address">Primary Address</label>
+        <input type="text" name="address" id="address" [(ngModel)] = "locationResponse.primary_address"  required>   
+        <label for="pincode">Pincode</label>
+        <input type="text" name="pincode" id="pincode" [(ngModel)] = "locationResponse.pincode"  required> 
+        <label for="coordinates">Co-ordinates</label>
+        <input type="text" name="coordinates" id="coordinates" [(ngModel)] = "locationResponse.coordinates"  required>     
+        <button (click)="updateLocationDetails()" *ngIf="!updatedLocation">Update Location</button>
+    </form>
+</div>
+
+<mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
+
+
+<!-- 
+<div class="location-container" *ngIf="addNewLocation">
+    <form [formGroup]="addOrUpdateFormBuilder" (ngSubmit)="updateLocationDetails()">
+        <label for="country">Country</label> 
+        <input type="text" name="country" id="country" formControlName="country" required>
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" formControlName="city"  required>  
+        <label for="state">State</label>
+        <input type="text" name="state" id="state" formControlName="state"  required>   
+        <label for="address">Primary Address</label>
+        <input type="text" name="address" id="address" formControlName="primary_address"  required>   
+        <label for="pincode">Pincode</label>
+        <input type="text" name="pincode" id="pincode" formControlName="pincode"  required> 
+        <label for="coordinates">Co-ordinates</label>
+        <input type="text" name="coordinates" id="coordinates" formControlName="coordinates" required>     
+        <button type="submit" *ngIf="!updatedLocation">Update Location</button>
+    </form>
+</div> -->

@@ -1,0 +1,109 @@
+<h1>WELCOME REALTOR!</h1>
+
+
+<div class="landing">
+    <div class="container">
+        <div class="card" >
+            <div class="card-inner">
+                <div class="front">
+                    <p class="text-content">Properties</p>
+                    <img src="/assets/default.jpeg">
+                </div>
+                
+                <div class="back">
+                    <a routerLink="properties" (click)="notInHome()"> Properties </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="card" >
+            <div class="card-inner">
+                <div class="front">
+                    <p class="text-content">Locations</p>
+                    <img src="/assets/locations-default.png" >
+                </div>
+                
+                <div class="back">
+                    <a routerLink="locations" (click)="notInHome()"> Locations </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="card" >
+            <div class="card-inner">
+                <div class="front">
+                    <p class="text-content">Agents</p>
+                    <img src="/assets/profile-default.png" >
+                    
+                </div>
+                
+                <div class="back">
+                    <a routerLink="agents" (click)="notInHome()"> Agents </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="card" >
+            <div class="card-inner">
+                <div class="front">
+                    <p class="text-content">Profile</p>
+                    <img src="/assets/user-prof-default.png" >
+                </div>
+                
+                <div class="back">
+                    <a routerLink="user" (click)="notInHome()"> {{username}} </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" *ngIf="isAdmin">
+        <div class="card" >
+            <div class="card-inner">
+                <div class="front">
+                    <p class="text-content">Users</p>
+                    <img src="/assets/users-default.png" >
+                </div>
+                
+                <div class="back">
+                    <a *ngIf="isAdmin" routerLink="info" (click)="notInHome()"> Users </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="container">
+        <div class="card" >
+            <div class="card-inner">
+                <div class="front">
+                    <p class="text-content">Logout</p>
+                    <img class="logout" src="/assets/waving-hand.png" >
+                </div>
+                
+                <div class="back">
+                    <a routerLink="/login" (click)="logoutUser()" > Logout </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="text" placeholder="Search Properties" [(ngModel)] ="search" (input)="searchFun()">
+
+<p>{{search}}</p>
+
+<app-search-results></app-search-results>
+<!-- <div *ngIf="inHome">
+    <img src="" alt="test">
+</div> -->
+<div>
+    <router-outlet></router-outlet>
+</div>

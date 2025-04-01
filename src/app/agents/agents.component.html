@@ -1,0 +1,32 @@
+<button (click)="backHome()" mat-icon-button color="primary"><mat-icon>home</mat-icon></button>
+
+
+<div class="container">
+    <div class="card" *ngFor="let agent of agents">
+        <div class="card-inner">
+            <div class="front">
+                <img src="/assets/profile-default.png" >
+                <p class="text-content">Name: {{agent.userId.fullname}}</p>
+
+            </div>
+
+            <div class="back">
+                    <p>Fullname: {{agent.userId.fullname}}</p>
+                    <p>Phone Number: {{agent.userId.phonenumber}}</p>
+                    <p>Email: {{agent.userId.email}}</p>
+                    <p>Rating: {{agent.rating}}</p>
+                    <p>Sales Count:{{agent.sale_count}}</p>
+                    <!-- <button *ngIf="buyer || admin">Select</button> --> 
+                    <!-- DO WE KEEP THE BUTTON OR NOT -->
+            </div>
+        </div>
+    </div>
+</div>
+<mat-paginator [length]="totalElements" 
+              [pageSize]="pageSize"
+              (page)="handlePageEvent($event)"
+              [pageSizeOptions]="[10]"
+              aria-label="Select page">
+</mat-paginator>
+
+<!-- rating to be added -->
